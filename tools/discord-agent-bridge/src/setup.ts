@@ -37,7 +37,7 @@ console.log('Connecting to Discord to create/find channels...');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-client.once('ready', async () => {
+client.once('clientReady', async () => {
   try {
     const guild = await client.guilds.fetch(config.discordGuildId);
     await guild.channels.fetch();

@@ -170,7 +170,7 @@ async function handleCommand(interaction: ChatInputCommandInteraction): Promise<
   }
 }
 
-client.once('ready', async () => {
+client.once('clientReady', async () => {
   if (!client.user) {
     throw new Error('Discord client is not ready.');
   }
