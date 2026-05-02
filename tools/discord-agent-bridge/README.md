@@ -57,6 +57,8 @@ npm start
 
 `npm run setup:env` writes a local `.env` file. Do not commit `.env`.
 
+If `npm run setup` says `Missing Access`, open the invite URL printed by the setup command, select the correct Discord server, approve the bot, then run `npm run setup` again. This means Discord does not yet see the app as installed in the server/guild ID from `.env`.
+
 If you do not know your Discord user ID yet:
 
 1. Leave `DISCORD_ALLOWED_USER_IDS` blank during setup.

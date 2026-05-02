@@ -13,9 +13,24 @@ console.log('');
 console.log('Registering slash commands...');
 
 const rest = new REST({ version: '10' }).setToken(config.discordToken);
-await rest.put(Routes.applicationGuildCommands(config.discordClientId, config.discordGuildId), {
-  body: slashCommands,
-});
+try {
+  await rest.put(Routes.applicationGuildCommands(config.discordClientId, config.discordGuildId), {
+    body: slashCommands,
+  });
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error);
+  if (message.includes('Missing Access')) {
+    console.error('');
+    console.error('Discord returned Missing Access while registering slash commands.');
+    console.error('This usually means the bot is not installed in that server, the server/guild ID is wrong,');
+    console.error('or the bot was invited without the applications.commands scope.');
+    console.error('');
+    console.error('Open this invite URL, choose the target server, approve it, then run npm run setup again:');
+    console.error(inviteUrl);
+    throw new Error('Bot is not installed in the configured Discord server yet.');
+  }
+  throw error;
+}
 
 console.log('Slash commands registered.');
 console.log('Connecting to Discord to create/find channels...');
