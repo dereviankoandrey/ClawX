@@ -144,7 +144,7 @@
         "globals": "^17.3.0",
         "grammy": "^1.42.0",
         "https-proxy-agent": "^9.0.0",
-        "i18next": "^25.8.11",
+        "i18next": "^26.3.4",
         "jsdom": "^28.1.0",
         "lucide-react": "^0.563.0",
         "mpg123-decoder": "^1.0.3",
